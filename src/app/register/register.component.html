@@ -1,0 +1,62 @@
+<div class="card">
+    <h4 class="card-header">Register</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="empId">Employee Id</label>
+                <input type="number" formControlName="empId" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empId.errors }" />
+                <div *ngIf="submitted && f.empId.errors" class="invalid-feedback">
+                    <div *ngIf="f.empId.errors.required">Employee Id is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empName">Employee Name</label>
+                <input type="text" formControlName="empName" pattern="^[a-zA-Z ]*$" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empName.errors }" />
+                <div *ngIf="submitted && f.empName.errors" class="invalid-feedback">
+                    <div *ngIf="f.empName.errors.required">Employee Name is required</div>
+                    <div *ngIf="f.empName.errors.pattern">Employee Name is Invalid</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empEmail">Employee Email</label>
+                <input type="email" formControlName="empEmail" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empEmail.errors }" />
+                <div *ngIf="submitted && f.empEmail.errors" class="invalid-feedback">
+                    <div *ngIf="f.empEmail.errors.required">Employee Email is required</div>
+                    <div *ngIf="f.empEmail.errors.pattern">Employee Email is Invalid</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empPassword">Employee Password</label>
+                <input type="password" formControlName="empPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empPassword.errors }" />
+                <div *ngIf="submitted && f.empPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.empPassword.errors.required">Password is required</div>
+                    <div *ngIf="f.empPassword.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empMobileNo">Mobile No</label>
+                <input type="number" formControlName="empMobileNo" pattern="^[6-9]\d{9}$"class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empMobileNo.errors }" />
+                <div *ngIf="submitted && f.empMobileNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.empMobileNo.errors.required">Employee Mobile No. is required</div>
+                    <div *ngIf="f.empMobileNo.errors.pattern">Employee Mobile No. must start with 7/8/9 and have 10 character</div>
+                    <div *ngIf="f.empMobileNo.errors.minlength">Employee Mobile No. must be at least 10 characters</div>
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="empMagicWord">Magic Word</label>
+                <input type="text" formControlName="empMagicWord" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.empMagicWord.errors }" />
+                <div *ngIf="submitted && f.empMagicWord.errors" class="invalid-feedback">
+                    <div *ngIf="f.empMagicWord.errors.required">Magic Word is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Register
+                </button>
+                <a routerLink="/login" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
