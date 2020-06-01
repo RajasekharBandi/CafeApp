@@ -1,6 +1,11 @@
+
+  section{
+    position: relative;
+  }
+
 .jumbotron {
     
-    background-image: url("https://images.unsplash.com/photo-1521017432531-fbd92d768814?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+    background-image: url("/assets/images/background.jpeg");
     background-size: cover;
     height: 700px;
     padding: 0;
